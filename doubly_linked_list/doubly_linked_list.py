@@ -54,7 +54,7 @@ class DoublyLinkedList:
       self.length += 1
 
   def remove_from_head(self):
-    if not self.head:
+    if not self.head and not self.tail:
       return None
     self.length -= 1
 
@@ -67,7 +67,7 @@ class DoublyLinkedList:
       current_head = self.head
       self.head = self.head.next #becomes what it was pointing to
       self.head.prev = None
-      return current_head
+      return current_head.value
 
   def add_to_tail(self, value):
     if self.length == 0:

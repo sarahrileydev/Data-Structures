@@ -8,7 +8,7 @@ class TextBuffer:
         # check if an init string is provided
         # if so, put the contents of the init string in self.contents
         if init:
-            pass
+          self.append(init)
 
     def __str__(self):
         # needs to return a string to print 
@@ -20,18 +20,23 @@ class TextBuffer:
         return s
 
     def append(self, string_to_add):
-        pass
+        for char in string_to_add:
+          self.contents.add_to_tail(char)
     
     def prepend(self, string_to_add):
         # reverse the incoming string to maintain correct 
         # order when adding to the front of the text buffer 
-        pass
+        for char in string_to_add[::-1]:
+          self.contents.add_to_head(char)
 
     def delete_front(self, chars_to_remove):
-        pass
+        for i in range(chars_to_remove):
+          self.contents.remove_from_head() 
+
 
     def delete_back(self, chars_to_remove):
-        pass
+        for i in range(chars_to_remove):
+          self.contents.remove_from_tail() 
 
     """
     Join other_buffer to self
