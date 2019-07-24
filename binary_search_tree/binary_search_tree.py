@@ -19,7 +19,7 @@ class BinarySearchTree:
 
   def contains(self, target):
     #base case no value or value is the root
-    if self.value is None or self.value == target:
+    if self.value == target:
       return True
     
     if self.value < target and self.right:
@@ -32,7 +32,24 @@ class BinarySearchTree:
       return False
 
   def get_max(self):
-    pass
+    max_val = self.value
+    left_max = None
+    right_max = None
+    if self.left:
+      left_max = self.left.get_max()
+      if left_max > max_val:
+        max_val = left_max
+    if self.right:
+      right_max = self.right.get_max()
+      if right_max > max_val:
+        max_val = right_max
+    return max_val
+
 
   def for_each(self, cb):
-    pass
+    #start with the first one
+    cb(self.value)
+    if self.left:
+      self.left.for_each(cb)
+    if self.right:
+      self.right.for_each(cb)
