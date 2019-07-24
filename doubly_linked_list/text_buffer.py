@@ -45,18 +45,30 @@ class TextBuffer:
     The head of the concatenated buffer will be the head of this buffer 
     """
     def join(self, other_buffer):
+        if(other_buffer.contents.length == 0):
+          print("ERROR: Other buffer is empty")
+          return 
         # we might want to check that other_buffer is indeed a text buffer 
-        # set self list tail's next node to be the head of the other buffer 
+        if isinstance(other_buffer, TextBuffer):
+          # set self list tail's next node to be the head of the other buffer 
+          self.contents.tail.next = other_buffer.contents.head
+          # set other_buffer head's prev node to be the tail of this buffer
+          other_buffer.contents.head.prev = self.contents.tail 
+          self.contents.tail = other_buffer.contents.tail 
+          self.contents.length += other_buffer.contents.length
+        else: 
+          print("ERROR: Argument is not a text buffer.")
+          return
+          
         
-        # set other_buffer head's prev node to be the tail of this buffer
         
-        pass
         
     # if we get fed a string instead of a text buffer instance,
     # initialize a new text buffer with this string and then 
     # call the join method 
-    def join_string(self, string_to_join):
-        pass
+    # def join_string(self, string_to_join):
+    #     new_buffer = TextBuffer(string_to_join)
+    #     self.join(new_buffer)
 
 if __name__ == '__main__':
     text = TextBuffer("Super")
