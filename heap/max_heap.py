@@ -37,7 +37,7 @@ class Heap:
         child = index * 2 + 1
         while child <= end:
             right_child = child + 1
-            if right_child <= end and self.storage[index] < self.storage[right_child]:
+            if right_child <= end and self.storage[child] < self.storage[right_child]:
                 child = right_child
             if self.storage[index] < self.storage[child]:
                 self.storage[index], self.storage[child] = self.storage[child], self.storage[index]
