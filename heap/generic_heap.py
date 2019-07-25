@@ -10,15 +10,15 @@ class Heap:
     pass
 
   def get_priority(self):
-    pass
+    return self.storage[0]
 
   def get_size(self):
-    pass
+    return len(self.storage)
 
   def _bubble_up(self, index):
     while index > 0:
       #compare to parent
-      parent = (index - 1) // 2
+      parent = (index - 1) // 2 #double divide handles the rounding
 
       if self.storage[index] > self.storage[parent]:
         self.storage[index], self.storage[parent] = self.storage[parent], self.storage[index]
